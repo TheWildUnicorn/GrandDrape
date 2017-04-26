@@ -20,3 +20,10 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.skill_name
+
+class Field(models.Model):
+    field_name = models.CharField(max_length = 35)
+    person = models.ManyToManyField(Person, related_name = "field_set")
+
+    def __str__(self):
+        return self.field_name
