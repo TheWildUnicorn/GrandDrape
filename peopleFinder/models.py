@@ -8,7 +8,8 @@ class Person(models.Model):
     first = models.CharField(max_length = 35)
     last = models.CharField(max_length = 35)
     phone = models.CharField(max_length = 10, default = '0000000000') 
-    email = models.EmailField(max_length = 254, default = 'No Email Available')
+    email = models.EmailField(max_length = 254, default = 'None')
+    state = models.CharField(max_length = 2, default = 'ZZ')
 
     def __str__(self):
         return "%s %s" %(self.first, self.last)
