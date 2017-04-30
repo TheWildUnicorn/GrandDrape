@@ -1,0 +1,15 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'peopleFinder/style.css' %}"/>
+    </head>
+    <body>
+        <div id="header">
+            <h1 id="title">Grand Drape</h1>
+        </div>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

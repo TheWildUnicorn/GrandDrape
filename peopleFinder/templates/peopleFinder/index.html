@@ -1,0 +1,20 @@
+{% extends 'peopleFinder/base.html' %}
+
+{% block content %}
+{% with view.get_form as form %}
+<form method='GET'>
+    {# {{ form.as_table }} #}
+    <label>
+        {{ form.name.label }}
+        {{ form.name }}
+    </label>
+    <button type='submit'>Search</button>
+</form>
+{% endwith %}
+<h2>People</h2>
+<ul>
+    {% for person in object_list %}
+        <li>{{ person }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
