@@ -1,6 +1,9 @@
 {% extends 'peopleFinder/base.html' %}
 
 {% block content %}
+<p>A small amount of data is available in the database for queries.The list of people below is all of the people in the database. It will be filtered by your search criteria.</p>
+<p>To search for a skillset, hold down the Command key on a Mac or the Control key on a PC, and select or deselect all the options you wish to search for.</p>
+<p>To view more information about a person, click on their name.</p>
 {% with view.get_form as form %}
 <form method='GET'>
     {# {{ form.as_table }} #}
@@ -8,13 +11,38 @@
         {{ form.name.label }}
         {{ form.name }}
     </label>
+    <label>
+        {{ form.state.label }}
+        {{ form.state }}
+    </label>
+    <label>
+        {{ form.skills.label }}
+        {{ form.skills }}
+    </label>
+    <label>
+        {{ form.field.label }}
+        {{ form.field }}
+    </label>
     <button type='submit'>Search</button>
 </form>
 {% endwith %}
-<h2>People</h2>
+<h2>Matching People:</h2>
 <ul>
     {% for person in object_list %}
-        <li>{{ person }}</li>
+        <li class='clickable-li' onclick='openPersonModal({{ person.pk }})'>{{ person }}</li>
     {% endfor %}
 </ul>
+<div id='person-modal-container' class='modal-container'>
+    <div class='modal'>
+        <span class='close' onclick='closePersonModal();'>&times;</span>
+        <div id='person-modal-content'><p>Loading...</p></div>
+    </div>
+</div>
+<script>
+document.getElementById('person-modal-container').onclick = function(event) {
+    if (event.target == this) {
+        closePersonModal();
+    }
+}
+</script>
 {% endblock content %}

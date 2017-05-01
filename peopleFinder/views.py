@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .forms import PeopleFinderForm
 from .models import Person
@@ -21,3 +21,6 @@ class IndexView(ListView):
             queryset = form.filter_queryset(queryset)
         return queryset
 
+class PersonView(DetailView):
+    model = Person
+    template_name = 'peopleFinder/details.html'

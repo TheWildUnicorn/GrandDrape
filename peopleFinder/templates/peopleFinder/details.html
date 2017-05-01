@@ -1,0 +1,15 @@
+<h1>{{ object.first }} {{ object.last }}</h1>
+<ul>
+    <li>State: {{ object.state }}</li>
+    <li>Phone: {{ object.phone }}</li>
+    <li>Email: {{ object.email }}</li>
+    {% for field in object.field_set.all %}
+        <li>Field: {{ field }}</li>
+    {% endfor %}
+    <li>Skills:</li>
+    <ul>
+        {% for skill in object.skill_set.all %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</ul>
